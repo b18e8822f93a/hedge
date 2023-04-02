@@ -1,0 +1,63 @@
+<html>
+
+<head>
+   
+    </script>
+    <script src="../cdn/jquery-3.3.1.min.js"></script>
+    <script src="../cdn/highcharts.js"></script>
+
+  
+    <script src="spots.js"></script>
+    <script src="settlement.js"></script>
+    <div id="slider2" class="slider"></div>
+    <div id="slider3" class="slider"></div>
+    <script>
+       
+        const theChart = {
+            title: {
+                text: null
+            },
+          
+
+            credits: {
+                enabled: false
+            },
+           
+        };
+
+        function addChart(series, containerName) {
+
+            let theData  = settlements.data.map(o => o[1]); 
+            settlements.data = theData;
+            let options = {
+               
+                series: [settlements, ...series] //[cumulativeSeries2, cumulativeSeries]
+            };
+            var opts = jQuery.extend(true, options, theChart);
+            console.log(opts);
+         
+            var container = $("#" + containerName);
+            container.highcharts(opts);
+        }
+        window.onload = function () {
+            console.log(series)
+            // document.body.innerHTML = table_html;
+            addChart(series, "slider3");
+        };
+
+        //document.getElementById("slider2").innerHTML = '<h3>' + df + '</h3>';
+    </script>
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+
+</body>
+
+
+
+</html>
