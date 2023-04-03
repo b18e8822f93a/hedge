@@ -2,13 +2,13 @@
 
 <head>
    
-    </script>
     <script src="../cdn/jquery-3.3.1.min.js"></script>
     <script src="../cdn/highcharts.js"></script>
 
   
-    <script src="json/spots.js"></script>
-    <script src="json/settlement.js"></script>
+    <!-- <script src="json/spots.js"></script>
+    <script src="json/settlements.js"></script> -->
+    <script src="json/hedgeType.js"></script>
     <div id="slider2" class="slider"></div>
     <div id="slider3" class="slider"></div>
     <script>
@@ -27,11 +27,17 @@
 
         function addChart(series, containerName) {
 
-            let theData  = settlements.data.map(o => o[1]); 
-            settlements.data = theData;
+
+         
             let options = {
-               
-                series: [settlements, ...series] //[cumulativeSeries2, cumulativeSeries]
+                xAxis: {
+    plotLines: [{
+        color: '#FF0000', // Red
+        width: 2,
+        value: vLine
+    }]
+},
+                series: series //[cumulativeSeries2, cumulativeSeries]
             };
             var opts = jQuery.extend(true, options, theChart);
             console.log(opts);
